@@ -201,7 +201,7 @@ static void dispatch(const char *method, cJSON *id, cJSON *params)
             "{\"type\":\"object\","
             "\"properties\":{"
               "\"function\":{\"type\":\"string\",\"description\":\"Function name\"},"
-              "\"args\":{\"type\":\"array\",\"description\":\"Arguments to pass\"}"
+              "\"args\":{\"type\":\"array\",\"items\":{},\"description\":\"Arguments to pass\"}"
             "},"
             "\"required\":[\"function\"]}");
         cJSON_AddItemToObject(t2, "inputSchema", s2);

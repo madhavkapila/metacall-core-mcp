@@ -3,7 +3,7 @@
 
 export LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH:-}
 
-export LOADER_SCRIPT_PATH=/app/test/scripts
+export LOADER_SCRIPT_PATH=/"${LOADER_SCRIPT_PATH:-/app}"
 
 echo "[entrypoint] LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >&2
 echo "[entrypoint] LOADER_SCRIPT_PATH=$LOADER_SCRIPT_PATH" >&2

@@ -1,0 +1,15 @@
+{
+  "servers": {
+    "metacall-mcp": {
+      "command": "docker",
+      "args": [
+        "run", 
+        "-i", 
+        "--rm", 
+        "-v", "/home:/home",
+        "-e", "LOADER_SCRIPT_PATH=${workspaceFolder}",
+        "metacall-mcp"
+      ]
+    }
+  }
+}

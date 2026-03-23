@@ -61,9 +61,9 @@ cJSON *metacall_value_to_json(void *v)
             return cJSON_CreateNumber(metacall_value_to_double(v));
         case METACALL_STRING:
         {
-            size_t size;
-            const char *s = metacall_value_to_string(v, &size);
-            return cJSON_CreateString(s);
+            char *s = metacall_value_to_string(v);
+            cJSON *str_json = cJSON_CreateString(s);
+            return str_json;
         }
         break;
         case METACALL_NULL:

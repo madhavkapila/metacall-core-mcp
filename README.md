@@ -59,7 +59,7 @@ chmod +x test/scripts/test.sh
 ./test/scripts/test.sh --native
 ```
 
-**What this does:** It tests the `initialize` handshake, requests `tools/list`, and executes the `load_script` and `call_function` tools against the included `math_utils.py` and `hello.py` test files.
+**What this does:** It tests the `initialize` handshake, requests `tools/list`, and executes the `load` and `call` tools against the included `math_utils.py` and `hello.py` test files.
 
 ---
 
@@ -78,7 +78,7 @@ To give GitHub Copilot Agent autonomous access to your MetaCall runtime, you nee
    * `metacall-mcp-docker`
    * `metacall-mcp-native`
 5. Click the **Start** button next to the version you built. Click "Trust" when prompted by VS Code.
-6. Open the **Copilot Chat panel**, switch to **Agent Mode**, and click the **Tools (wrench) icon**. Ensure both `load_script` and `call_function` are checked.
+6. Open the **Copilot Chat panel**, switch to **Agent Mode**, and click the **Tools (wrench) icon**. Ensure both `load` and `call` are checked.
 
 ### Example Prompt
 Once the server is running, you can test the end-to-end integration by sending Copilot a prompt like this:
@@ -89,7 +89,7 @@ Once the server is running, you can test the end-to-end integration by sending C
 
 ## 🧰 Available Tools
 
-* **`load_script`**: Instructs MetaCall to ingest a file.
+* **`load`**: Instructs MetaCall to ingest a file.
   * Arguments: `language` (e.g., "py", "node") and `files` (array of file paths).
-* **`call_function`**: Executes a function currently loaded in MetaCall's memory.
+* **`call`**: Executes a function currently loaded in MetaCall's memory.
   * Arguments: `function` (string name) and `args` (array of arguments to pass).

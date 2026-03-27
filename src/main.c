@@ -180,7 +180,7 @@ static void dispatch(const char *method, cJSON *id, cJSON *params)
         cJSON *tools = cJSON_CreateArray();
 
         cJSON *t1 = cJSON_CreateObject();
-        cJSON_AddStringToObject(t1, "name", "load_script");
+        cJSON_AddStringToObject(t1, "name", "load");
         cJSON_AddStringToObject(t1, "description",
             "Load source files into metacall. Supports py, node, rb, ts, and others.");
         cJSON *s1 = cJSON_Parse(
@@ -194,7 +194,7 @@ static void dispatch(const char *method, cJSON *id, cJSON *params)
         cJSON_AddItemToArray(tools, t1);
 
         cJSON *t2 = cJSON_CreateObject();
-        cJSON_AddStringToObject(t2, "name", "call_function");
+        cJSON_AddStringToObject(t2, "name", "call");
         cJSON_AddStringToObject(t2, "description",
             "Call a function that was previously loaded. Pass arguments as an array.");
         cJSON *s2 = cJSON_Parse(
@@ -224,9 +224,9 @@ static void dispatch(const char *method, cJSON *id, cJSON *params)
         if (!arguments) arguments = cJSON_CreateObject();
 
         cJSON *result = NULL;
-        if (strcmp(name->valuestring, "load_script") == 0)
+        if (strcmp(name->valuestring, "load") == 0)
             result = handle_load_script(arguments);
-        else if (strcmp(name->valuestring, "call_function") == 0)
+        else if (strcmp(name->valuestring, "call") == 0)
             result = handle_call_function(arguments);
         else
             result = mcp_text_result("unknown tool", 1);

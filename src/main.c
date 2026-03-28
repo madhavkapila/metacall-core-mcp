@@ -92,13 +92,25 @@ static cJSON *handle_load_script(cJSON *args)
     if (rc != 0)
         return mcp_text_result("failed to load — check file paths and language tag", 1);
 
-    //TODO: inspect : Giving error will resolve later
-    // size_t sz = 0;
-    // char *info = metacall_inspect(&sz, NULL);
-    // cJSON *r = mcp_text_result(info ? info : "loaded ok", 0);
-    // return r;
+    struct metacall_allocator_std_type std_ctx = { malloc, realloc, free };
+    void *allocator = metacall_allocator_create(METACALL_ALLOCATOR_STD, (void *)&std_ctx);
 
-    return mcp_text_result("loaded ok", 0);
+    size_t sz = 0;
+    char *info = metacall_inspect(&sz, allocator);
+
+    cJSON *r;
+    if (info) 
+    {
+        r = mcp_text_result(info, 0);
+        metacall_allocator_free(allocator, info);
+    } 
+    else
+        r = mcp_text_result("loaded ok (no introspection data)", 0);
+
+    metacall_allocator_destroy(allocator);
+    return r;
+
+    // return mcp_text_result("loaded ok", 0);
 }
 
 

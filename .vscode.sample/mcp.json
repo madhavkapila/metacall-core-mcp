@@ -1,15 +1,22 @@
 {
   "servers": {
-    "metacall-mcp": {
+    "metacall-mcp-docker": {
       "command": "docker",
       "args": [
-        "run", 
-        "-i", 
-        "--rm", 
-        "-v", "/home:/home",
-        "-e", "LOADER_SCRIPT_PATH=${workspaceFolder}",
+        "run", "-i", "--rm", 
+        "-v", "/home:/home", 
+        "-e", "LOADER_SCRIPT_PATH=${workspaceFolder}", 
         "metacall-mcp"
       ]
+    },
+    
+    "metacall-mcp-native": {
+      "command": "${workspaceFolder}/metacall-mcp",
+      "args": [],
+      "env": {
+        "LOADER_SCRIPT_PATH": "${workspaceFolder}",
+        "LD_LIBRARY_PATH": "/gnu/lib:/usr/local/lib"
+      }
     }
   }
 }
